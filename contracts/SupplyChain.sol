@@ -88,7 +88,7 @@ contract SupplyChain {
 
   // modifier forSale
   modifier forSale(uint sku) {
-    // require(items[sku].seller != 0);
+    require(items[sku].seller == address(0));
     require(items[sku].state == State.ForSale, "Item is not for sale.");
     _;
   }

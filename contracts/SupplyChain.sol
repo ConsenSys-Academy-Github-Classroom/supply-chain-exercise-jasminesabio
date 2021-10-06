@@ -88,7 +88,7 @@ contract SupplyChain {
 
   // modifier forSale
   modifier forSale(uint sku) {
-    require(items[sku].seller == address(0));
+    require(items[sku].seller != address(0));
     require(items[sku].state == State.ForSale, "Item is not for sale.");
     _;
   }
@@ -123,7 +123,6 @@ contract SupplyChain {
       price: _price,
       state: State.ForSale,
       seller: msg.sender,
-      // address(0)?
       buyer: address(0)
     });
     // 2. Increment the skuCount by one
